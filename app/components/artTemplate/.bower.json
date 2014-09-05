@@ -1,0 +1,20 @@
+{
+  "name": "artTemplate",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {},
+  "main": [
+    "lib/template.min.js",
+    "lib/template.js"
+  ],
+  "version": "3.0.2",
+  "_release": "3.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.2",
+    "commit": "407d33bb081ad2c0b14b5b72f05f19e584eed1d0"
+  },
+  "_source": "http://ipm.staff.ifeng.com/qinfuji/arttemplate.git",
+  "_target": "~3",
+  "_originalSource": "artTemplate"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "requirejs",
+  "version": "2.1.11",
+  "description": "requirejs project",
+  "author": {
+    "name": "qinfj",
+    "email": "qinfj@ifeng.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://ipm.staff.ifeng.com/qinfuji/requirejs/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://ipm.staff.ifeng.com/qinfuji/requirejs.git"
+  },
+  "homepage": "http://ipm.staff.ifeng.com/qinfuji/requirejs.git",
+  "dependencies": {},
+  "devDependencies": {
+    
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "bugs": {
+    "url": "http://ipm.staff.ifeng.com/qinfuji/requirejs/issues"
+  }
+}

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vermap">
+var glueComponentVerMap = {"requirejs":"2.1.11"}
+</script>
+<meta charset="utf-8" />
+<title>glue测试</title>
+<script>
+  var glue = {test: 123};
+</script>
+<script src="./components/requirejs/require.js"></script>
+<!-- build:js scripts/glue-core.js lib-->
+<script type="text/javascript" src="./scripts/core.js"></script>
+<script type="text/javascript" src="./scripts/events.js"></script>
+<script type="text/javascript" src="./scripts/class.js"></script>
+<script type="text/javascript" src="./scripts/dom.js"></script>
+<script type="text/javascript" src="./scripts/utils.js"></script>
+<script type="text/javascript" src="./scripts/device.new.js"></script>
+<script type="text/javascript" src="./scripts/modelFactory.js"></script>
+<script type="text/javascript" src="./scripts/widgetManage.js"></script>
+<script type="text/javascript" src="./scripts/widgetMessage.js"></script>
+<script type="text/javascript" src="./scripts/widgetRegist.js"></script>
+<script type="text/javascript" src="./scripts/widgetScan.js"></script>
+<script type="text/javascript" src="./scripts/widgetRun.js"></script>
+<script type="text/javascript" src="./scripts/resolveObject.js"></script>
+<script type="text/javascript" src="./scripts/glue.js"></script>
+<script type="text/javascript" src="./scripts/debug.js"></script>
+<script type="text/javascript" src="./scripts/widgetBase.js"></script>
+<!--endbuild-->
+<script>
+    var glueComponentVerMap = {
+      'TestWidgetA': '~1.0.0',
+      'TestWidget': '1.2.1'
+    }
+    require.config({
+       paths:{
+            'jquery' : 'http://y1.ifengimg.com/base/jQuery/jquery-1.9.1.min'
+       },
+       waitSeconds: 40
+    });
+</script>
+
+<script type="text/javascript" src="./demo/TestWidgetNew.js"></script>
+<script type="text/javascript" src="./demo/TestWidgetNew1.js"></script>
+
+</head>
+<body style="background:#ddd;">
+  <a href="javascript:void(0)" onclick="window.location.href='http://www.sina.com';">测试阻止</a>
+  <div g-cid="TestWidget5" g-depId="TestWidget1" g-cname="TestWidgetA" g-priority="2" g-options="{'detail.d': '@@modelE.d', 'map': '@@modelF', isDisable: true}"></div>
+
+<script>
+  var glueOther = glue.noConflict();
+  var modelE = glueOther.modelFactory.define(function (vm) {
+    vm.url = '1';
+    vm.o = [];
+    vm.d = {a: '',
+            b: []};
+  });
+
+  var modelF = glueOther.modelFactory.define(function (vm) {
+    vm.a = '';
+    vm.b = [];
+    vm.c = {
+      d: '',
+      e: []
+    };
+  });
+
+  var test123 = 1;
+
+  modelE.$watch('url', function (newValue) {
+    glueOther.log('Global', newValue);
+  });
+
+  modelE.d.$watch('a', function (newValue) {
+    glueOther.log('Global--->d.a', newValue);
+  });
+
+  modelE.d.b.$watch('push', function (newValue) {
+    glueOther.log('Global--->d.b', newValue);
+  });
+
+  modelF.$watch('a', function (newValue) {
+    glueOther.log('Global--->a', newValue);
+  });
+
+  modelF.b.$watch('push', function (newValue) {
+    glueOther.log('Global--->b.push', newValue);
+  });
+
+  modelF.b.$watch('pop', function (newValue) {
+    glueOther.log('Global--->b.pop', newValue);
+  });
+
+  modelF.b.$watch('unshift', function (newValue) {
+    glueOther.log('Global--->b.unshift', newValue);
+  });
+
+  modelF.b.$watch('shift', function (newValue) {
+    glueOther.log('Global--->b.shift', newValue);
+  });
+
+  modelF.$watch('c', function (newValue) {
+    glueOther.log('Global--->c', newValue);
+  });
+
+  modelF.c.$watch('d', function (newValue) {
+    glueOther.log('Global--->c.d', newValue);
+  });
+
+  modelF.c.e.$watch('push', function (newValue) {
+    glueOther.log('Global--->c.e.push', newValue);
+  });
+
+  glueOther.scan();
+  glueOther.run();
+</script>
+<div style="width:20%;float:left;margin:10px;" g-options="{'modelTest.topic': '@@test1.topic'}" g-cid="TestWidget1" g-cname="TestWidget" priority="3">
+  <!-- <div g-cid="TestWidget3" g-cname="TestWidgetA" priority="4"></div> -->
+<form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">
+                组件1
+            </legend>
+        </div>
+        <div class="control-group">
+            <label  class="col-sm-3 control-label" for="input01">
+                Topic
+            </label>
+            <div class="controls">
+                <div class="input-append">
+                  <input class="span2 appendedInputButton" name="appendedInputButton" type="text">
+                  <button class="btn" type="button">修改</button>
+                  <button class="btn" type="button" id="notityNext">notify next</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>    
+</div>
+
+
+<div style="width:20%;float:left;margin:10px;" >
+    <form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">
+                外部修改：<span id="testChangeBox"></span>
+            </legend>
+        </div>
+        <div class="control-group">
+            <!-- Text input-->
+            <label class="col-sm-3 control-label" for="input01">
+                Topic
+            </label>
+            <div class="controls">
+                <div class="input-append">
+                  <input class="span2 appendedInputButtonOuter" name="appendedInputButtonOuter" type="text">
+                  <button class="btn" type="button" onclick="return changeTopic()">修改</button>
+                  <button class="btn" type="button" onclick="return regTopic()">注册</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>    
+</div>
+
+
+<!--
+<div style="width:20%;float:left;margin:10px;"  id="TestWidget2" g-cid="TestWidget2" g-cname="TestWidget" g-attr-topic="obj.topic" priority="2" depId="TestWidget1">
+-->
+
+<div style="width:20%;float:left;margin:10px;"  id="TestWidget2">
+<form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">
+                组件2 : topic : {{modelTest.topic}}
+            </legend>
+        </div>
+        <div class="control-group">
+            <!-- Text input-->
+            <label class="col-sm-3 control-label" for="input01">
+                Topic
+            </label>
+            <div class="controls">
+                <div class="input-append">
+                  <input class="span2 appendedInputButton" name="appendedInputButton" type="text">
+                  <button class="btn" type="button">修改</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>     
+</div>
+
+<div g-cid="widget4567" g-cname="WidgetA"></div>
+<!-- <div g-cid="TestWidget4" g-cname="TestWidgetA" priority="4"></div> -->
+
+<script>
+
+  glueOther.log(glueOther);
+  glueOther.log(glue);
+
+  var modelA = glueOther.modelFactory.define(function (vm) {
+    vm.a = '1';
+    vm.o = [];
+  });
+
+  modelA.$watch('a', function (newValue) {
+    glueOther.log('a change,', this, newValue);
+  });
+
+  modelA.o.$watch('push', function (newValue) {
+    glueOther.log('o push,', this, newValue);
+  });
+
+  // modelA.o.$watch('push', function (newValue) {
+  //   glueOther.log('o push,', this, newValue);
+  // });
+
+  // var modelB = glueOther.modelFactory.defineArray([1, 2, 3]);
+
+  // modelB.$watch('a', function (newValue) {
+  //   glueOther.log('a change,', this, newValue);
+  // });
+
+  var test = glueOther.modelFactory.define(function (vm) {
+    vm.topic = "sss";
+  });
+
+  var test1 = glueOther.modelFactory.define(function (vm) {
+    vm.topic = "sss";
+  });
+
+  test.$watch('topic', function (newValue) {
+    $('#testChangeBox').html(newValue);
+  });
+
+  function changeTopic(){
+    var value = jQuery('.appendedInputButtonOuter').val();
+    test1.topic = value;
+    test.topic = value;
+    return false;
+          
+  }
+
+  function regTopic () {
+    glueOther.widgetRegist(document.getElementById('TestWidget2'), 'TestWidget2' , 'TestWidget' , 'TestWidget1' , 5 , {'modelTest.topic' : '@@test.topic'});
+    glueOther.run();
+    return false;
+  }
+
+  glueOther.scan();
+  glueOther.run();
+
+define('WidgetA', ["F_glue", 'F_WidgetBase'], function (glue, WidgetBase) {
+  var WidgetA = WidgetBase.extend({
+    createModel: function () {
+      this.a = 1;
+    },
+    createComplete: function () {
+      this.method();
+    },
+    method: function () {
+      console.log(this.a);
+    }
+  });
+
+  return WidgetA;
+});
+
+define('WidgetB', ["F_glue", 'F_WidgetBase'], function (glue, WidgetBase) {
+  var WidgetB = WidgetBase.extend({
+    createModel: function () {
+      this.model = new glue.modelFactory.define(function(vm) {
+        vm.list = [];
+      });
+    },
+    bindDataEvent: function () {
+      this.model.list.$watch('push', function (newValue) {
+        console.log('WidgetB--->', newValue);
+      });
+    },
+    bindCustomEvent: function () {
+      this.on('custom1', function () {
+        console.log('custom1--->', arguments);
+      }, this)
+    },
+    bindObserver: function () {
+      this.observer('notifyName', function (message) {
+        console.log('notifyName--->', message);
+      });
+    }
+  });  
+
+  // glue.Events.mixTo(WidgetB);
+  return WidgetB;
+});
+
+require(['F_glue', 'WidgetB', 'WidgetA'], function (glue, WidgetB, WidgetA) {
+
+  var model = new glue.modelFactory.define(function(vm) {
+    vm.list = [];
+  });
+
+  model.list.$watch('push', function(newValue) {
+    console.log('out--->', newValue);
+  });
+
+  var widget1 = new WidgetA(glue).create();
+  widget1.notify('notifyName', 'widget1 message');
+  var widget = new WidgetB(glue).create(null, {'model.list': model.list});
+  model.list.push(1,2,3);
+  widget.model.list.push(4,5,6);
+  widget.trigger('custom1', 1, 2, 3);
+  widget1.notify('notifyName', 'widget1 message new');
+});
+
+
+glueOther.widgetRegist(null, 'widget1234', 'WidgetA');
+glueOther.run();
+
+// require(['WidgetA'], function (WidgetA) {
+//   var widget = new WidgetA(glueOther).create();
+//   widget.method();
+// });
+
+</script>
+
+<div style="height: 2000px;"></div>
+</body>
+</html>

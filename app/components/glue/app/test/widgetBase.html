@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>modelFactory Test</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="http://y1.ifengimg.com/base/jQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../glue.js"></script>
+    <script type="text/javascript" src="../modelFactory.js"></script>
+    <script type="text/javascript" src="../dom.js"></script>
+    <script type="text/javascript" src="../_widgetBase.js"></script>
+    <script type="text/javascript" src="../TestWidget.js"></script>
+    <script>
+        var jQuery = $;    
+    </script>
+</head>
+<body>
+
+
+<!--
+<div g-cid="TestWidget" g-cname="testWidget" g-attr-list="[1,2,3]" g-attr-template-string="templateString"  
+    g-attr-topic="obj.topic" g-attr-who="obj.who"
+    g-attr-address="{addr1:'ABC' , addr2:'BCD'}"></div>
+-->    
+
+<div style="width:20%;float:left;margin:10px;" g-cid="TestWidget" g-cname="TestWidget1" g-attr-topic="obj.topic">
+<form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">
+                组件1
+            </legend>
+        </div>
+        <div class="control-group">
+            <label  class="col-sm-3 control-label" for="input01">
+                Topic
+            </label>
+            <div class="controls">
+                <div class="input-append">
+                  <input class="span2 appendedInputButton" name="appendedInputButton" type="text">
+                  <button class="btn" type="button">修改</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>    
+</div>
+<div style="width:20%;float:left;margin:10px;" >
+    <form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">
+                外部修改
+            </legend>
+        </div>
+        <div class="control-group">
+            <!-- Text input-->
+            <label class="col-sm-3 control-label" for="input01">
+                Topic
+            </label>
+            <div class="controls">
+                <div class="input-append">
+                  <input class="span2 appendedInputButtonOuter" name="appendedInputButtonOuter" type="text">
+                  <button class="btn" type="button" onclick="return changeTopic()">修改</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>    
+</div>
+
+<div style="width:20%;float:left;margin:10px;" g-cid="TestWidget2" g-cname="TestWidget" g-attr-topic="obj.topic">
+<form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">
+                组件2
+            </legend>
+        </div>
+        <div class="control-group">
+            <!-- Text input-->
+            <label class="col-sm-3 control-label" for="input01">
+                Topic
+            </label>
+            <div class="controls">
+                <div class="input-append">
+                  <input class="span2 appendedInputButton" name="appendedInputButton" type="text" value="">
+                  <button class="btn" type="button">修改</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>     
+</div>
+
+
+<div id="qunit"></div>
+
+<script>  
+     /*
+     var modelFactory = glue.Modules['ModelFactory'];
+     var arr = modelFactory.defineArray([1,2,3]);
+     var obj = modelFactory.define("aa" , function(vm){ vm.topic = "sss"; vm.who="Fe"});
+     var addr = modelFactory.define("addr" , function(vm){vm.addr1="add1" , vm.addr2="addr2"});
+     var templateString = "<div>{{address.addr1}}{{address.addr2}}{{topic}}{{who}}<span style='border:1px red solid;'>{{topic}}</span></div>"
+     glue.scan();
+     var testWidget = glue.Widgets['testWidget'];
+     testWidget.model.topic = 1;
+     obj.topic = "222";
+     obj.who = "Fe2";
+     obj.$watch('who' , function(newvalue){
+        //alert('outert who : '+ newvalue);
+     });
+     addr.addr1 = "Addr1";
+     testWidget.model.who = "F6"
+     obj.who = "F7"
+     testWidget.model.address.addr1 =  "ADDR1";
+     */
+     var modelFactory = glue.Modules['ModelFactory'];
+      var  obj = modelFactory.define("aa" , function(vm){ 
+         vm.topic = "sss"; 
+     });
+     
+     
+     glue.scan();
+     
+     function changeTopic(){
+            var value = jQuery('.appendedInputButtonOuter').val();
+            obj.topic = value;
+            return false;
+     }
+     
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "jquery",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {},
+  "main":"lib/scripts/jquery-1.8.1.min.js",
+  "cdnmain":"http://y0.ifengimg.com/base/jQuery/jquery-1.8.1.min.js"
+}

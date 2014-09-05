@@ -1,0 +1,7 @@
+{
+  "name": "artTemplate",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {},
+  "main":["lib/template.min.js","lib/template.js"]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "glue",
+  "private": false,
+  "dependencies": {
+    "requirejs": "~2.1.11"
+  },
+  "devDependencies": {},
+  "main": [
+    "dist/scripts/glue-core_e9daf2ec.min.js",
+    "dist/scripts/glue-core_e9daf2ec.js"
+  ],
+  "version": "1.1.6",
+  "_release": "1.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.6",
+    "commit": "2001087706fce2a5a65b882a01b4b4e8f1e3da5e"
+  },
+  "_source": "http://ipm.staff.ifeng.com/root/glue.git",
+  "_target": "~1",
+  "_originalSource": "glue"
+}

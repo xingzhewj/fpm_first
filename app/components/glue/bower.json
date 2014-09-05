@@ -1,0 +1,12 @@
+{
+  "name": "glue",
+  "private": false,
+  "dependencies": {
+    "requirejs": "~2.1.11"
+  },
+  "devDependencies": {},
+  "main": [
+    "dist/scripts/glue-core_e9daf2ec.min.js",
+    "dist/scripts/glue-core_e9daf2ec.js"
+  ]
+}

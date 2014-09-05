@@ -1,0 +1,23 @@
+{
+  "name": "requirejs",
+  "version": "2.1.11",
+  "homepage": "http://requirejs.org",
+  "authors": [
+    "jrburke.com"
+  ],
+  "description": "A file and module loader for JavaScript",
+  "main": "require.js",
+  "keywords": [
+    "AMD"
+  ],
+  "license": "new BSD, and MIT",
+  "_release": "2.1.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.11",
+    "commit": "ebe29335a84e041349186119f0d74b13c5da1e71"
+  },
+  "_source": "http://ipm.staff.ifeng.com/qinfuji/requirejs.git",
+  "_target": "~2.1.11",
+  "_originalSource": "requirejs"
+}

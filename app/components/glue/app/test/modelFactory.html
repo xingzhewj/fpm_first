@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>modelFactory Test</title>
+  <link rel="stylesheet" href="qunit.css">
+  <script type="text/javascript" src="./qunit.js"></script>
+  <script type="text/javascript" src="../glue.js"></script>
+  <script type="text/javascript" src="../modelFactory.js"></script>
+</head>
+<body style="background:#ddd;">
+<div id="qunit"></div>
+<script>        
+    var modelFactory = glue.Modules['ModelFactory'];
+    
+    var vmodel =  modelFactory.define('test' , function(vm){
+            vm.stringType = 'a';
+            vm.getStringTypeValue = function(){
+                 return this.stringType;
+            };
+            vm.o = {a:1,b:3 , fnType: function(){
+                      return 'isFunction'; 
+                   }};  
+            vm.arr = []; 
+             
+    });
+    
+    
+    vmodel.$watch("stringType" , function(newValue){
+         test('vm.stringType赋值监听' , function(){
+            ok('1' == newValue);   
+         });
+    });
+    vmodel.stringType = '1';
+    
+    test('getStringTypeValue with this' , function(){
+        ok(vmodel.stringType == vmodel.getStringTypeValue());
+    });
+    
+    //测试数组完整替换
+    vmodel.$watch('arr' , function(obj){
+        test('set new Array Test ' , function(){
+            ok(obj.length == 2);
+            ok(obj[0] == 2);
+            ok(obj[1] == 3);
+            
+        });
+    });
+    vmodel.arr = [2,3];
+    
+    /*
+    vmodel.arr.$watch('push' , function(newValue){
+           test('Array push' , function(newValue){
+                ok(vmodel.arr.length == 3);
+                ok(newValue == 1);
+                
+           }); 
+    });
+    vmodel.arr.push(1);
+    
+    
+    vmodel.arr.$watch('shift' , function(newValue){
+           test('Array shift' , function(newValue){
+                ok(vmodel.arr.length == 2);
+                ok(newValue == 2);
+           }); 
+    });
+    vmodel.arr.shift();
+    */
+    
+    
+    //测试完整对象付值测试
+    vmodel.$watch('o',function(newValue){
+         test('set new Object Test ' , function(){
+            ok( newValue.c == 3);   
+            ok( newValue.d == 4);
+         });
+    });
+    vmodel.o = {'c':3 , 'd' : 4};
+    
+    
+</script>
+</body>
+</html>

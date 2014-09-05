@@ -1,0 +1,35 @@
+.mod-demo-view {
+  position: relative;
+}
+
+.mod-demo-view .w-pre {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  padding: 5px;
+  font-size: 12px;
+  font-style: normal;
+  background: #FF0;
+  cursor: pointer;
+}
+
+.mod-demo-view .w-next {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  padding: 5px;
+  font-size: 12px;
+  font-style: normal;
+  background: #FF0;
+  cursor: pointer;
+}
+
+.mod-demo-view .w-view-item {
+  text-align: center;
+}
+
+.mod-demo-view .w-view-item span {
+  display: block;
+}

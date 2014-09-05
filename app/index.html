@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+    <script id="vermap">
+    var glueComponentVerMap = {"glue":"1.1.6","jquery":"1.8.1","artTemplate":"3.0.2"}
+    </script>
+    
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- build:basejs scripts/base-core.js-->
+        <!--bower:basejs-->
+        <script src="components/requirejs/require.js"></script>
+        <script src="components/glue/dist/scripts/glue-core_e9daf2ec.js"></script>
+        <!--endbower-->
+        <!--endbuild-->
+        
+        <!-- build:css styles/F_demoView-core.css lib-->
+        <link rel="stylesheet" href="styles/mod-demoView.css"/>
+        <!--endbuild-->
+        
+        <!-- build:css styles/F_demoView_depmodules.css-->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <style type="text/css">
+            .p-newViewBox {
+                width: 480px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- build:js scripts/F_demoView_main.js lib-->
+        <script src="scripts/F_demoView_template.js"></script>
+        <script src="scripts/F_demoView.js"></script>
+        <!--组件本身的js文件-->
+        <!--endbuild-->
+        
+        
+        <!-- build:requirejs scripts/F_demoView_depmodules.js-->
+        <!--bower:requirejs-->
+        <script>
+           requirejs.config({
+             paths:{
+              "jquery" : "http://y0.ifengimg.com/base/jQuery/jquery-1.8.1.min",
+              "artTemplate" : "components/artTemplate/lib/template"
+        
+             },
+             waitSeconds: 20,shim: {}});
+        </script>
+        <!--endbower-->
+        <!--endbuild-->
+        <button id="addNewsHandle">添加内容</button>
+        <div id="viewBox" class="p-newViewBox"></div>
+
+        <script>
+        var list = [{id:'01dcc884-4cab-474c-8997-bc6ed2627fd5',link:'http://v.ifeng.com/news/mainland/201408/01dcc884-4cab-474c-8997-bc6ed2627fd5.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/46ecbe09-03c6-45ba-9811-e136296b9b7e.jpg',text:'习近平明确点出国企严重问题 动手后对高管提要求',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/46ecbe09-03c6-45ba-9811-e136296b9b7e.jpg'},{id:'01b8b54e-10c1-47ba-8365-1a3d0e647b56',link:'http://v.ifeng.com/news/opinion/201408/01b8b54e-10c1-47ba-8365-1a3d0e647b56.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/2573f381-5d4e-4e3a-851e-78fe5f27ca5b.jpg',text:'评：习近平借反腐排除最大阻力 发动改革2.0',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/2573f381-5d4e-4e3a-851e-78fe5f27ca5b.jpg'},{id:'0154534b-5f3f-480c-ae18-6bebf8d2daf9',link:'http://v.ifeng.com/news/mainland/201408/0154534b-5f3f-480c-ae18-6bebf8d2daf9.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/1d0963ce-7299-430c-a60d-d621b7b167cc.jpg',text:'习近平借势北戴河会议 定未来7年改革路线图',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/1d0963ce-7299-430c-a60d-d621b7b167cc.jpg'},{id:'01f1798a-e545-45cb-82b5-218c18f01848',link:'http://v.ifeng.com/news/opinion/201408/01f1798a-e545-45cb-82b5-218c18f01848.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/cba923d1-8101-473c-b909-fe6b590ec52f.jpg',text:'石齐平：习近平所抓深改头一个重点令人意外',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/cba923d1-8101-473c-b909-fe6b590ec52f.jpg'},{id:'011efd21-4f62-4486-b52e-716cd9102246',link:'http://v.ifeng.com/news/mainland/201408/011efd21-4f62-4486-b52e-716cd9102246.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/b6cadf7d-282d-4a1b-93d9-cadf1dbce84e.jpg',text:'习近平定深化改革元年突破口 一提法有深意',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/b6cadf7d-282d-4a1b-93d9-cadf1dbce84e.jpg'},{id:'01d8f558-bb06-4bff-9767-7798e209bc0c',link:'http://v.ifeng.com/news/mainland/201408/01d8f558-bb06-4bff-9767-7798e209bc0c.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/18/e09eeffa-51f9-4e42-83ab-0d9d56d8cd3d.jpg',text:'北戴河会议曝习李分工 习近平主抓顶层设计',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/18/e09eeffa-51f9-4e42-83ab-0d9d56d8cd3d.jpg'},{id:'0182461a-8300-4fe1-aedc-2018eca50fea',link:'http://v.ifeng.com/news/mainland/201408/0182461a-8300-4fe1-aedc-2018eca50fea.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/18f253ee-d7de-4940-bfaa-7c89e65e1f92.jpg',text:'国企高管薪酬改革将成收入分配改革关键一步',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/18f253ee-d7de-4940-bfaa-7c89e65e1f92.jpg'},{id:'018ea907-712e-4e56-9239-ea1cdc7ed2b6',link:'http://v.ifeng.com/news/mainland/201408/018ea907-712e-4e56-9239-ea1cdc7ed2b6.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/19/1ae788f9-f154-4688-8c4b-7c5a70d1fe0b.jpg',text:'习近平首提深改元年 称国企老总薪酬过高必须调整',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/19/1ae788f9-f154-4688-8c4b-7c5a70d1fe0b.jpg'},{id:'01bdccf5-cd6e-45de-aaaf-17aea9a730a9',link:'http://v.ifeng.com/news/mainland/201408/01bdccf5-cd6e-45de-aaaf-17aea9a730a9.shtml',img:'http://d.ifengimg.com/w120_h90/y0.ifengimg.com/pmop/2014/08/18/9fa3608c-cd12-4f39-b1f9-5da6d7fecd87.jpg',text:'习近平主持召开中央深化改革领导小组会议',poster:'http://d.ifengimg.com/w480_h270/y0.ifengimg.com/pmop/2014/08/18/9fa3608c-cd12-4f39-b1f9-5da6d7fecd87.jpg'}];
+
+            var news = glue.modelFactory.define(function (vm) {
+              vm.list = [];
+            });
+
+            document.getElementById('addNewsHandle').onclick = function () {
+                if (list.length > 0) {
+                    // var item = list.pop();
+                    news.list.push.apply(news.list, list);
+                }
+            };
+
+            glue.widgetRegist(document.getElementById('viewBox'), 'newView', 'F_demoView', null, 1, {'news.list': '@@news.list'});
+            glue.run();
+        </script>        
+    </body>
+</html>

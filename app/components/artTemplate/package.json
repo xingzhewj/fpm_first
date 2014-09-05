@@ -1,0 +1,30 @@
+{
+  "name": "artTemplate",
+  "version": "3.0.2",
+  "description": "artTemplate project",
+  "author": {
+    "name": "qinfj",
+    "email": "qinfj@ifeng.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://ipm.staff.ifeng.com/qinfuji/arttemplate/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://ipm.staff.ifeng.com/qinfuji/arttemplate.git"
+  },
+  "homepage": "http://ipm.staff.ifeng.com/qinfuji/arttemplate.git",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "bugs": {
+    "url": "http://ipm.staff.ifeng.com/qinfuji/arttemplate/issues"
+  }
+}
